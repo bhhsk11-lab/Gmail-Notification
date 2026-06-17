@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Gmail Notification</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #D93025;
+      --red-dark: #a8261d;
+      --blue: #1a73e8;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --border: #e2e4e8;
+      --text: #202124;
+      --muted: #5f6368;
+      --pill-bg: #fce8e6;
+      --pill-text: #c5221f;
+      --yes-bg: #e6f4ea;
+      --yes-text: #137333;
+      --no-bg: #f1f3f4;
+      --no-text: #5f6368;
+    }
+
+    body {
+      font-family: 'Google Sans', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── TOP BAR ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    header span {
+      font-size: 13px;
+      color: var(--muted);
+      display: block;
+      font-weight: 400;
+    }
+
+    /* ── HERO BAND ── */
+    .hero {
+      background: linear-gradient(135deg, #D93025 0%, #a8261d 100%);
+      color: #fff;
+      text-align: center;
+      padding: 3.5rem 2rem 3rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      font-size: 15px;
+      opacity: 0.88;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── SECTION ── */
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    section h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .icon-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--pill-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-circle svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--red);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    section p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 0.85rem;
+    }
+
+    section p:last-child { margin-bottom: 0; }
+
+    section ul {
+      padding-left: 1.25rem;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    section ul li { margin-bottom: 0.5rem; }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    /* ── DATA TABLE ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 0.5rem;
+    }
+
+    .data-table th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      padding: 0 0 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--muted);
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table td:first-child { color: var(--text); font-weight: 500; width: 42%; }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .pill-yes { background: var(--yes-bg); color: var(--yes-text); }
+    .pill-no  { background: var(--no-bg);  color: var(--no-text); }
+
+    /* ── PERMISSIONS GRID ── */
+    .perm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 560px) { .perm-grid { grid-template-columns: 1fr; } }
+
+    .perm-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+    }
+
+    .perm-card .perm-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--red-dark);
+      font-family: 'Courier New', monospace;
+      margin-bottom: 5px;
+    }
+
+    .perm-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ── CERT LIST ── */
+    .cert-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cert-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 0 !important;
+    }
+
+    .cert-list li:last-child { border-bottom: none; }
+
+    .check {
+      width: 20px;
+      height: 20px;
+      background: var(--yes-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .check svg {
+      width: 11px;
+      height: 11px;
+      stroke: var(--yes-text);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg);
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-box p { margin: 0; font-size: 14px; }
+
+    .contact-box a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-box a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .effective-date {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="36" height="36" rx="8" fill="#D93025"/>
+    <path d="M8 12h20v14a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V12z" fill="white"/>
+    <path d="M8 12l10 9 10-9" stroke="#D93025" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <div>
+    <h1>Gmail Notification</h1>
+    <span>Chrome Extension · Privacy Policy</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Privacy Policy</div>
+  <h2>Your privacy, clearly explained</h2>
+  <p>We built Gmail Notification to keep you informed — not to collect your data. Here's exactly what we do and don't do.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- 1. Overview -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </span>
+      Overview
+    </h3>
+    <p>This Privacy Policy describes how the <strong>Gmail Notification</strong> Chrome extension ("the extension", "we", "our") handles information when you use it. By installing the extension you agree to this policy.</p>
+    <p>The extension's sole purpose is to display your Gmail unread count as a badge on the browser toolbar and to let you preview recent emails in a popup — without leaving your current tab.</p>
+    <span class="effective-date">Effective date: June 2025 &nbsp;·&nbsp; Last updated: June 2025</span>
+  </section>
+
+  <!-- 2. Data we access -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      What data we access
+    </h3>
+    <p>The extension reads data from <strong>Gmail's Atom feed</strong> (<code>mail.google.com/mail/feed/atom</code>) — a standard, publicly documented feed that Gmail has provided for years. From this feed we access:</p>
+    <ul>
+      <li>Your Gmail <strong>email address</strong> — used only to label accounts in the popup when you have multiple Google accounts signed in.</li>
+      <li><strong>Unread message count</strong> — displayed as a badge on the toolbar icon.</li>
+      <li>For each unread email: <strong>sender name</strong>, <strong>subject line</strong>, and a short <strong>snippet</strong> (the first few words of the email body) — displayed in the popup preview.</li>
+    </ul>
+    <p>This data is fetched using your existing browser session (cookies). We never ask for, store, or transmit your Google password or any authentication credentials.</p>
+  </section>
+
+  <!-- 3. Data table -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </span>
+      Data usage at a glance
+    </h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Collected</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Email address</td>
+          <td><span class="pill pill-yes">Local only</span></td>
+          <td>Shown in popup to identify accounts; never sent to any server.</td>
+        </tr>
+        <tr>
+          <td>Unread count, subject, sender, snippet</td>
+          <td><span class="pill pill-yes">Local only</span></td>
+          <td>Fetched from Gmail Atom feed; stored in local browser cache only.</td>
+        </tr>
+        <tr>
+          <td>User settings</td>
+          <td><span class="pill pill-yes">Local only</span></td>
+          <td>Check interval, sounds, DND times etc. — stored in chrome.storage.local.</td>
+        </tr>
+        <tr>
+          <td>Anonymous analytics ID</td>
+          <td><span class="pill pill-yes">Collected</span></td>
+          <td>A randomly generated ID (no name, no email) sent to Amplitude to measure installs and errors.</td>
+        </tr>
+        <tr>
+          <td>Passwords / credentials</td>
+          <td><span class="pill pill-no">Never</span></td>
+          <td>We never read, request, or store authentication credentials.</td>
+        </tr>
+        <tr>
+          <td>Full email body</td>
+          <td><span class="pill pill-no">Never</span></td>
+          <td>Only the short snippet exposed by the Atom feed is read.</td>
+        </tr>
+        <tr>
+          <td>Browsing history</td>
+          <td><span class="pill pill-no">Never</span></td>
+          <td>The floating button script does not record which pages you visit.</td>
+        </tr>
+        <tr>
+          <td>Financial / health data</td>
+          <td><span class="pill pill-no">Never</span></td>
+          <td>Not applicable.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4. Permissions -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </span>
+      Chrome permissions explained
+    </h3>
+    <p>The extension requests only the permissions required to deliver its features:</p>
+    <div class="perm-grid">
+      <div class="perm-card">
+        <div class="perm-name">alarms</div>
+        <p>Schedules periodic checks of your Gmail unread count at the interval you choose.</p>
+      </div>
+      <div class="perm-card">
+        <div class="perm-name">tabs</div>
+        <p>Detects if Gmail is already open so the extension focuses it instead of opening a duplicate tab.</p>
+      </div>
+      <div class="perm-card">
+        <div class="perm-name">notifications</div>
+        <p>Displays optional desktop notifications (sender + subject) when new mail arrives, if you enable this.</p>
+      </div>
+      <div class="perm-card">
+        <div class="perm-name">storage</div>
+        <p>Saves your preferences (sound, interval, Do Not Disturb hours) locally in your browser.</p>
+      </div>
+      <div class="perm-card">
+        <div class="perm-name">offscreen</div>
+        <p>Creates a hidden page solely to play notification sounds — Manifest V3 service workers cannot play audio directly.</p>
+      </div>
+      <div class="perm-card">
+        <div class="perm-name">scripting</div>
+        <p>Injects the optional floating quick-access button into webpages (opt-in, can be disabled in options).</p>
+      </div>
+      <div class="perm-card">
+        <div class="perm-name">activeTab</div>
+        <p>Injects the floating button into your current tab when you change settings, without requiring broad host access.</p>
+      </div>
+      <div class="perm-card">
+        <div class="perm-name">host: mail.google.com</div>
+        <p>Required to fetch the Gmail Atom feed — the core function of the extension.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Analytics -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </span>
+      Anonymous analytics
+    </h3>
+    <p>We use <strong>Amplitude</strong> to collect anonymous, aggregate usage data. This helps us fix bugs and understand which features matter most. Specifically:</p>
+    <ul>
+      <li>A <strong>randomly generated device ID</strong> is created on first install. It contains no name, email, or any information that could identify you.</li>
+      <li>Events like <em>extension installed</em>, <em>settings changed</em>, and <em>popup opened</em> may be recorded — never the content of your emails.</li>
+      <li>You can opt out by disabling the extension or uninstalling it.</li>
+    </ul>
+    <p>No analytics data is sold or shared with any third party beyond Amplitude (our analytics processor). Amplitude's own privacy policy is available at <a href="https://amplitude.com/privacy" target="_blank" rel="noopener">amplitude.com/privacy</a>.</p>
+  </section>
+
+  <!-- 6. Data sharing -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </span>
+      Data sharing &amp; third parties
+    </h3>
+    <p>We <strong>do not sell, rent, or trade</strong> any data about you. We do not share any data with advertisers. The only third-party processor is Amplitude for anonymous analytics (described above).</p>
+    <p>Your email content (subject, sender, snippet) is never transmitted outside your browser. It lives only in <code>chrome.storage.local</code> on your device and is cleared when you uninstall the extension.</p>
+  </section>
+
+  <!-- 7. No remote code -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </span>
+      No remote code execution
+    </h3>
+    <p>The extension does not load or execute JavaScript from any external URL. All scripts are bundled inside the extension package and reviewed as part of every release. This means no third party can change what code runs in your browser without a published extension update.</p>
+  </section>
+
+  <!-- 8. Children -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      Children's privacy
+    </h3>
+    <p>This extension is not directed at children under 13. We do not knowingly collect any information from children. If you believe a child has used this extension and you have concerns, please contact us (see below).</p>
+  </section>
+
+  <!-- 9. Your rights -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </span>
+      Your rights &amp; choices
+    </h3>
+    <ul>
+      <li><strong>Access &amp; deletion</strong> — Because all email data is stored only on your own device, you can clear it at any time by uninstalling the extension or clearing extension storage in Chrome's settings.</li>
+      <li><strong>Disable analytics</strong> — Uninstall the extension to stop all data collection.</li>
+      <li><strong>Disable optional features</strong> — The floating button, notification sounds, and badge animation can each be individually disabled in the extension's Options page without affecting core functionality.</li>
+    </ul>
+  </section>
+
+  <!-- 10. Certifications -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </span>
+      Chrome Web Store certifications
+    </h3>
+    <ul class="cert-list">
+      <li>
+        <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        We do not sell or transfer user data to third parties, outside of the approved use cases.
+      </li>
+      <li>
+        <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        We do not use or transfer user data for purposes that are unrelated to the extension's single purpose.
+      </li>
+      <li>
+        <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        We do not use or transfer user data to determine creditworthiness or for lending purposes.
+      </li>
+    </ul>
+  </section>
+
+  <!-- 11. Changes -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </span>
+      Changes to this policy
+    </h3>
+    <p>If we make material changes to this policy, we will update the effective date at the top and, where appropriate, provide notice through the extension itself or the Chrome Web Store listing.</p>
+    <p>Continued use of the extension after changes are posted constitutes your acceptance of the updated policy.</p>
+  </section>
+
+  <!-- 12. Contact -->
+  <section>
+    <h3>
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </span>
+      Contact us
+    </h3>
+    <p>Questions, concerns, or data deletion requests? Reach us at:</p>
+    <div class="contact-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <div>
+        <p><strong>Email:</strong> <a href="mailto:support@yourdomain.com">support@yourdomain.com</a></p>
+        <p style="margin-top:4px"><strong>Website:</strong> <a href="https://yourdomain.com" target="_blank" rel="noopener">yourdomain.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<footer>
+  &copy; 2025 Gmail Notification Extension &nbsp;·&nbsp; All rights reserved
+  <br>
+  <span style="font-size:12px;">This extension is not affiliated with or endorsed by Google LLC.</span>
+</footer>
+
+</body>
+</html>
